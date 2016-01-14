@@ -29,9 +29,6 @@ eval "$(plenv init -)"
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
-# radevent
-export SECRET_KEY_BASE=c34e5444cb4d3756a55c10a9b3fa905803f3be6a4f54bd6f62b3ddbc4913be0f3fb083ac7f7b9a9299a5b76391da3dea779a8194006671422caa203889c3d81a
-
 # Customize to your needs...
 
 export HISTSIZE=100000
