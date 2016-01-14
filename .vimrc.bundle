@@ -1,0 +1,97 @@
+"------------------------------------------------------------
+" bunlde.vimで管理してるpluginを読み込む
+"------------------------------------------------------------
+
+filetype off
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#begin(expand('~/.vim/bundle/'))
+
+  " 最強コメント処理 (<Leader>c<space>でコメントをトグル)
+  NeoBundle 'scrooloose/nerdcommenter.git'
+
+  " indent line
+  NeoBundle 'Yggdroot/indentLine'
+
+  " テキストを括弧で囲む／削除する
+  NeoBundle 'tpope/vim-surround'
+
+  " ファイルフォーマット整形
+  NeoBundleLazy 'alpaca-tc/beautify.vim', {
+      \ 'autoload' : {
+      \   'commands' : [
+      \     {
+      \       'name' : 'Beautify',
+      \       'complete' : 'customlist,beautify#complete_options'
+      \     }
+      \   ]
+      \ }}
+
+  " vimproc : vimから非同期実行。vimshelleで必要
+  NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
+  " 補完 neocomplcache.vim : 究極のVim的補完環境
+  NeoBundleLazy 'Shougo/neocomplete.vim', {
+      \ 'depends' : 'Shougo/vimproc',
+      \ 'autoload' : { 'insert' : 1,}
+      \ }
+
+  " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
+  NeoBundle 'thinca/vim-quickrun'
+
+  " 文法・構文解析チェック
+  NeoBundle 'scrooloose/syntastic'
+
+  " ソースコード上のメソッド宣言、変数宣言の一覧を表示
+  NeoBundle 'taglist.vim'
+
+  " 複数の単語ハイライト
+  NeoBundle 't9md/vim-quickhl'
+
+  " 複数置換
+  NeoBundle 'osyo-manga/vim-over'
+
+  " htmlのショートカット
+  NeoBundle 'mattn/emmet-vim'
+
+  " ツリー型エクスプローラ
+  NeoBundleLazy 'scrooloose/nerdtree', {
+      \ 'autoload': {
+      \     'commands': ['NERDTreeToggle'] } }
+
+  " lighline
+  NeoBundle 'itchyny/lightline.vim'
+
+  " ctrip 多機能セレクタ
+  NeoBundle 'kien/ctrlp.vim'
+
+  " バージョン管理カスタマイズ
+  NeoBundle 'vim-scripts/vcscommand.vim'
+
+  " vimからGit操作する
+  NeoBundle 'tpope/vim-fugitive'
+
+  " gitの差分を表示ハイライト shows a git diff in the 'gutter' (sign column)
+  NeoBundleLazy 'airblade/vim-gitgutter', {
+      \ 'autoload': {
+      \     'commands': ['GitGutterToggle'] } }
+
+  " すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'ujihisa/unite-colorscheme'
+
+  " カラースキーマ
+  NeoBundle 'tomasr/molokai'
+
+  call neobundle#end()
+endif
+
+filetype plugin indent on
