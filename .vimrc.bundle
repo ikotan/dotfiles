@@ -79,6 +79,9 @@ if has('vim_starting')
   " vimからGit操作する
   NeoBundle 'tpope/vim-fugitive'
 
+  " 自動で"end"を挿入 in Ruby
+  NeoBundle 'tpope/vim-endwise'
+
   " gitの差分を表示ハイライト shows a git diff in the 'gutter' (sign column)
   NeoBundleLazy 'airblade/vim-gitgutter', {
       \ 'autoload': {
@@ -86,10 +89,16 @@ if has('vim_starting')
 
   " すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
   NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/neomru.vim'
   NeoBundle 'ujihisa/unite-colorscheme'
 
   " カラースキーマ
   NeoBundle 'tomasr/molokai'
+  NeoBundle 'altercation/vim-colors-solarized'
+
+  " 言語対応
+  NeoBundle 'digitaltoad/vim-jade'
+  NeoBundle 'slim-template/vim-slim'
 
   call neobundle#end()
 endif

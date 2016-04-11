@@ -227,13 +227,13 @@ nnoremap <S-h> <C-w><
 " ハイライト on
 syntax enable
 
-" if has('gui_running')
-"     set background=light
-" else
-"     set background=dark
-" endif
+" 背景のメインをdark
+set background=dark
 
 colorscheme molokai
+
+" let g:solarized_termtrans=1
+" colorscheme solarized
 
 "-------------------------------------------------------------------------------
 " 編集関連 Edit
