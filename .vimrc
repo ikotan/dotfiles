@@ -230,10 +230,10 @@ syntax enable
 " 背景のメインをdark
 set background=dark
 
-colorscheme molokai
+" colorscheme molokai
 
-" let g:solarized_termtrans=1
-" colorscheme solarized
+let g:solarized_termtrans=1
+colorscheme solarized
 
 "-------------------------------------------------------------------------------
 " 編集関連 Edit
