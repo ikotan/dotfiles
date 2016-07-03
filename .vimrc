@@ -4,6 +4,12 @@ source ~/.vimrc.bundle
 " プラグインに依存するアレ
 source ~/.vimrc.plugins_setting
 
+" キャッシュファイル用
+set backupdir=/tmp
+
+" crontabをvimで開くため
+set backupskip=/tmp/*,/private/tmp/*
+
 "------------------------------------------------------------
 " 基本設定 Config
 "------------------------------------------------------------
@@ -230,10 +236,10 @@ syntax enable
 " 背景のメインをdark
 set background=dark
 
-colorscheme molokai
+" colorscheme molokai
 
-" let g:solarized_termtrans=1
-" colorscheme solarized
+let g:solarized_termtrans=1
+colorscheme solarized
 
 "-------------------------------------------------------------------------------
 " 編集関連 Edit
@@ -295,6 +301,7 @@ vnoremap < <gv
 set ffs=unix,dos,mac
 " デフォルトエンコーディング
 set encoding=utf-8
+scriptencoding utf-8
 " 文字コードの変換ショートカット
 noremap <space>utf :e ++enc=utf-8
 
@@ -338,3 +345,4 @@ noremap <space>xml    :setfiletype xml
 noremap <space>zsh    :setfiletype zsh
 noremap <space>scala  :setfiletype scala
 noremap <space>ng     :setfiletype nginx
+noremap <space>md     :setfiletype markdown

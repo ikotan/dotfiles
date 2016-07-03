@@ -228,3 +228,13 @@ let g:unite_source_file_mru_limit = 5000
 let g:unite_source_directory_mru_limit = 300
 let g:unite_source_rec_min_cache_files = 50
 let g:unite_source_rec_max_cache_files = 1000
+
+" ---------- 'kannokanno/previm' ----------
+let g:previm_open_cmd = 'open -a Google\ Chrome'
+
+" ---------- 'tyru/open-browser.vim' ----------
+" カーソル下のURLをブラウザで開く
+nmap <space>ob <Plug>(openbrowser-open)
+vmap <space>ob <Plug>(openbrowser-open)
+" ググる
+nnoremap <space>og :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
