@@ -282,3 +282,13 @@ autocmd BufRead,BufNewFile *.ts set filetype=typescript
 " autocmd FileType typescript setlocal completeopt+=menu,preview
 let g:tsuquyomi_completion_detail = 1
 let g:tsuquyomi_disable_quickfix = 1
+
+" ---------- 'kannokanno/previm' ----------
+let g:previm_open_cmd = 'open -a Google\ Chrome'
+
+" ---------- 'tyru/open-browser.vim' ----------
+" カーソル下のURLをブラウザで開く
+nmap <space>ob <Plug>(openbrowser-open)
+vmap <space>ob <Plug>(openbrowser-open)
+" ググる
+nnoremap <space>og :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
