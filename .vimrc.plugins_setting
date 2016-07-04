@@ -72,6 +72,13 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "<TAB>"
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+
+let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+let g:neocomplete#force_omni_input_patterns.typescript = '[^. \t]\.\%(\h\w*\)\?' 
+
 " ---------- 'thinca/vim-quickrun' ----------
 nnoremap <silent> qr :QuickRun -hook/time/enable 1<Enter>
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
@@ -94,23 +101,59 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_perl_lib_path = 'lib'
 let g:syntastic_mode_map = {
       \ 'mode': 'passive',
-      \ 'active_filetypes': ['ruby', 'perl', 'javascript', 'scala'],
+      \ 'active_filetypes': ['ruby', 'perl', 'javascript', 'scala', 'typescript'],
       \ 'passive_filetypes': []
       \ }
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_typescript_checkers = ['tsuquyomi']
 nnoremap <silent> <Space><C-d> :<C-u>lclose<Enter>
 
 
 " ---------- 'taglist.vim' ----------
-nmap <silent> tl :TlistToggle<Enter>
+" nmap <silent> tl :TlistToggle<Enter>
 " 右側でtaglistのウィンドーを表示
-let Tlist_Use_Right_Window = 1
+" let Tlist_Use_Right_Window = 1
 " taglistのウィンドーが最後のウィンドーならばVimを閉じる
-let Tlist_Exit_OnlyWindow = 1
+" let Tlist_Exit_OnlyWindow = 1
 " 自動表示
-let Tlist_Auto_Open = 1
+" let Tlist_Auto_Open = 1
 " 自動更新
-let Tlist_Auto_Update = 1
+" let Tlist_Auto_Update = 1
+
+" ---------- 'majutsushi/tagbar' ----------
+nmap <silent> tt :TagbarToggle<Enter>
+autocmd VimEnter * nested :call tagbar#autoopen(1)
+" ウィンドウのサイズ調整
+let g:tagbar_width = 30
+
+let g:tagbar_type_typescript = {
+      \ 'ctagstype': 'typescript',
+      \ 'kinds': [
+        \ 'c:classes',
+        \ 'n:modules',
+        \ 'f:functions',
+        \ 'v:variables',
+        \ 'v:varlambdas',
+        \ 'm:members',
+        \ 'i:interfaces',
+        \ 'e:enums',
+      \ ] }
+
+let g:tagbar_type_scala = {
+      \ 'ctagstype' : 'scala',
+      \ 'sro'       : '.',
+      \ 'kinds'     : [
+        \ 'p:packages',
+        \ 'T:types:1',
+        \ 't:traits',
+        \ 'o:objects',
+        \ 'O:case objects',
+        \ 'c:classes',
+        \ 'C:case classes',
+        \ 'm:methods',
+        \ 'V:values:1',
+        \ 'v:variables:1'
+      \ ] }
 
 " ---------- 't9md/vim-quickhl' ----------
 nmap <Space>m <Plug>(quickhl-manual-this)
@@ -207,6 +250,8 @@ nnoremap <silent> [unite]s  :<C-u>Unite snippet<CR>
 nnoremap <silent> [unite]c  :<C-u>Unite colorscheme -auto-preview<CR>
 " yank履歴一覧
 nnoremap <silent> [unite]y  :<C-u>Unite yankround<CR>
+" 宣言一覧
+nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
 " nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 " ウィンドウを分割して開く
 au Filetype unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('splist')
@@ -228,3 +273,12 @@ let g:unite_source_file_mru_limit = 5000
 let g:unite_source_directory_mru_limit = 300
 let g:unite_source_rec_min_cache_files = 50
 let g:unite_source_rec_max_cache_files = 1000
+
+" ---------- 'leafgarland/typescript-vim' ----------
+autocmd BufRead,BufNewFile *.ts set filetype=typescript
+
+" ---------- 'Quramy/tsuquyomi' ----------
+" autocmd FileType typescript setlocal completeopt-=menu
+" autocmd FileType typescript setlocal completeopt+=menu,preview
+let g:tsuquyomi_completion_detail = 1
+let g:tsuquyomi_disable_quickfix = 1

@@ -94,6 +94,7 @@ if has("autocmd")
   autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
   autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType typescript setlocal sw=2 sts=2 ts=2 et
   autocmd FileType coppffee   setlocal sw=2 sts=2 ts=2 et
   autocmd FileType perl       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
@@ -338,3 +339,4 @@ noremap <space>xml    :setfiletype xml
 noremap <space>zsh    :setfiletype zsh
 noremap <space>scala  :setfiletype scala
 noremap <space>ng     :setfiletype nginx
+noremap <space>ts     :setfiletype typescript
