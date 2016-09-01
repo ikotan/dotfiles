@@ -55,9 +55,6 @@ export LANG=ja_JP.UTF-8
 
 export LOCAL_IP='192.168.30.10'
 
-# radvent calendar secret_key
-export SECRET_KEY_BASE=c39516b8fbcdcc9bec8f99cedc2d5a04b4da03ce3786a60521e0f7df465af5112012c00980cf06ea235af2cd101d09643de21d8672cd0050d8e92f5c7c86e6af
-
 alias vi='vim'
 alias st='ssh-agent tmux -2'
 alias sta='ssh-agent tmux -2 a'
