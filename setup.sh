@@ -1,6 +1,6 @@
 #! /bin/sh
 
-DOT_FILES=( .inputrc .vimrc .vimrc.bundle .vimrc.plugins_setting .perltidyrc .tmux.conf )
+DOT_FILES=( .vimrc .vimrc.bundle .vimrc.plugins_setting .perltidyrc .tmux.conf .env.function .gitconfig )
 
 for file in ${DOT_FILES[@]}
 do
