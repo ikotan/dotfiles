@@ -45,11 +45,16 @@ let g:neocomplete#sources#tags#cache_limit_size   = 300000
 let g:neocomplete#enable_fuzzy_completion         = 1
 let g:neocomplete#lock_buffer_name_pattern        = '\*ku\*'
 " Define dictionary.
-" let g:neocomplete#sources#dictionary#dictionaries = {
-    " \ 'default' : '',
-    " \ 'vimshell' : $HOME.'/.vimshell_hist',
-    " \ 'scheme' : $HOME.'/.gosh_completions'
-        " \ }
+let s:neco_dicts_dir = $HOME.'./vim/dicts/'
+if isdirectory(s:neco_dicts_dir)
+  let g:neocomplete#sources#dictionary#dictionaries = {
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions',
+      \ 'ruby': s:neco_dicts_dir . '/ruby.dict',
+      \ 'javascript': s:neco_dicts_dir . '/jquery.dict'
+      \ }
+endif
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
@@ -77,7 +82,11 @@ if !exists('g:neocomplete#force_omni_input_patterns')
 endif
 
 let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
-let g:neocomplete#force_omni_input_patterns.typescript = '[^. \t]\.\%(\h\w*\)\?' 
+let g:neocomplete#force_omni_input_patterns.typescript = '[^. \t]\.\%(\h\w*\)\?'
+
+" Rsense
+let g:rsenseUseOmniFunc = 1
+let g:neocomplete#sources#rsense#home_directory = '/home/test_user/.rbenv/shims/rsense'
 
 " ---------- 'thinca/vim-quickrun' ----------
 nnoremap <silent> qr :QuickRun -hook/time/enable 1<Enter>
@@ -106,6 +115,7 @@ let g:syntastic_mode_map = {
       \ }
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_typescript_checkers = ['tsuquyomi']
+let g:syntastic_python_checkers = ["flake8"]
 nnoremap <silent> <Space><C-d> :<C-u>lclose<Enter>
 
 

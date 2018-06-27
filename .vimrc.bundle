@@ -45,6 +45,10 @@ if has('vim_starting')
       \ 'autoload' : { 'insert' : 1,}
       \ }
 
+  " 補完 ruby
+  NeoBundleLazy 'supermomonga/neocomplcache-rsense.vim', {
+      \ 'autoload' : { 'insert' : 1, 'filetype' : 'ruby', } }
+
   " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
   NeoBundle 'thinca/vim-quickrun'
 
@@ -86,10 +90,14 @@ if has('vim_starting')
   " 自動で"end"を挿入 in Ruby
   NeoBundle 'tpope/vim-endwise'
 
+  NeoBundleLazy "nvie/vim-flake8", {
+        \ "autoload": {
+        \   "filetypes": ["python", "python3", "djangohtml"] } }
+
   " gitの差分を表示ハイライト shows a git diff in the 'gutter' (sign column)
   NeoBundleLazy 'airblade/vim-gitgutter', {
-      \ 'autoload': {
-      \     'commands': ['GitGutterToggle'] } }
+        \ 'autoload': {
+        \     'commands': ['GitGutterToggle'] } }
 
   " すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
   NeoBundle 'Shougo/unite.vim'
